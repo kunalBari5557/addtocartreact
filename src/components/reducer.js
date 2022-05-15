@@ -1,16 +1,4 @@
 export const reducer = (state, action) => {
-  if (action.type === "REMOVE_ITEM") {
-    return {
-      ...state,
-      item: state.item.filter((curElem) => {
-        return curElem.id !== action.payload;
-      }),
-    };
-  }
-
-  if (action.type === "CLEAR_CART") {
-    return { ...state, item: [] };
-  }
 
   if (action.type === "INCREMENT") {
     const updatedCart = state.item.map((curElem) => {
@@ -36,22 +24,18 @@ export const reducer = (state, action) => {
   }
 
   if (action.type === "GET_TOTAL") {
-    let { totalItem, totalAmount } = state.item.reduce(
+    let { totalItem } = state.item.reduce(
       (accum, curVal) => {
-        let { price, quantity } = curVal;
-
-        let updatedTotalAmount = price * quantity;
-        accum.totalAmount += updatedTotalAmount;
+        let { quantity } = curVal;
 
         accum.totalItem += quantity;
         return accum;
       },
       {
         totalItem: 0,
-        totalAmount: 0,
       }
     );
-    return { ...state, totalItem, totalAmount };
+    return { ...state, totalItem };
   }
   return state;
 };

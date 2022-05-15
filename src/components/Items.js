@@ -1,39 +1,35 @@
 import React, { useContext } from "react";
 import { CartContext } from "./Cart";
+import {Card,Box} from '@mui/material';
 
-const Items = ({ id, description, title, img, price, quantity }) => {
-  const { removeItem, increment, decrement } = useContext(CartContext);
+const Items = ({ id, price, name }) => {
+  const { increment, decrement } = useContext(CartContext);
 
   return (
     <>
-      <div className="items-info">
-        <div className="product-img">
-          <img src={img} alt="iamge" />
-        </div>
-
+    <Box
+      sx={{
+        width: 250,
+        height: 300,
+        border:"0.5px solid",
+        marginTop:"2rem",
+      }}
+    >
+        <Card>
+        <div className="items-info">
         <div className="title">
-          <h2>{title}</h2>
-          <p>{description}</p>
+          <h3>Name : {name}</h3>
+          <h3>Price : {price}</h3>
         </div>
-
-        <div className="add-minus-quantity">
-          <i className="fas fa-minus minus" onClick={() => decrement(id)}></i>
-          <input type="text" placeholder={quantity} disabled />
-          <i className="fas fa-plus add" onClick={() => increment(id)}></i>
         </div>
-
-        <div className="price">
-          <h3>{price}₹</h3>
+        <Card>
+       <div className="card-total">
+          <button onClick={() => increment(id)}>Add to the cart</button>
+          <button onClick={() => decrement(id)}>Remove To cart</button>
         </div>
-
-        <div className="remove-item">
-          <i
-            className="fas fa-trash-alt remove"
-            onClick={() => removeItem(id)}></i>
-        </div>
-      </div>
-
-      <hr />
+        </Card>
+        </Card>
+        </Box>
     </>
   );
 };
