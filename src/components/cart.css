@@ -10,7 +10,7 @@ html {
 
 
 body {
-  width: 80%;
+  width: 85%;
   height: 100vh;
   margin: auto;
 }
@@ -26,7 +26,7 @@ header {
 
 .cart-icon {
   display: flex;
-  margin-right: 85rem;
+  margin-right: 86rem;
   position: relative;
   justify-content: flex-end;
 }

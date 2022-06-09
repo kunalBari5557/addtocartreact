@@ -31,7 +31,7 @@ const Cart = () => {
 
   useEffect(() => {
     dispatch({ type: "GET_TOTAL" });
-    console.log("console print add remove data");
+    console.log("console print add removed data");
   }, [state.item]);
 
   return (
